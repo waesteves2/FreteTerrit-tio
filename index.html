@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cálculo de frete</title>
+  
+<body>
+
+    <img src="https://www.tramaweb.com.br/wp-content/uploads/2018/11/Rodonaves-logo.png" alt="Logotipo da empresa" width="350" height="200">
+
+        
+  <!-- Crie uma tabela para exibir os dados de entrada e saída -->
+  <table>
+    <!-- Adicione uma linha de cabeçalho -->
+    <tr>
+      <th>Qtd de volumes</th>
+      <th>Peso (kg)</th>
+      <th>Valor da NF</th>
+      <th>Estado</th>
+      <th>Valor do frete</th> 
+    </tr>
+    <!-- Adicione uma linha de entrada de dados -->
+    <tr>
+      <td><input type="number" id="qtd_volumes" min="1" max="5"></td>
+      <td><input type="number" id="peso" min="0" max="100"></td>
+      <td><input type="number" id="valor_nf" min="0" max="3500"></td>
+      <td><input type="text" id="estado"></td>
+      <td id="valor_frete"></td>
+    </tr>
+  </table>
+  <!-- Adicione um botão para iniciar o cálculo -->
+  <button id="btn_calcular">Calcular</button>
+  <!-- Adicione um script para calcular o frete -->
+  <script>
+    // Obtenha a referência aos elementos da tabela
+    var qtdVolumes = document.getElementById("qtd_volumes");
+    var peso = document.getElementById("peso");
+    var valorNF = document.getElementById("valor_nf");
+    var estado = document.getElementById("estado");
+    var valorFrete = document.getElementById("valor_frete");
+
+    // Adicione um evento de clique ao botão de cálculo
+    var btnCalcular = document.getElementById("btn_calcular");
+    btnCalcular.addEventListener("click", function() {
+      // Obtenha os valores de entrada
+      var qtdVolumesValue = qtdVolumes.value;
+      var pesoValue = peso.value;
+      var valorNFValue = valorNF.value;
+      var estadoValue = estado.value;
+      // Inicialize o valor do frete como zero
+      var valorFreteValue = 0;
+
+      // Adicione o valor do frete com base na quantidade de volumes e no estado
+      if (estadoValue === "SP") {
+        if (qtdVolumesValue == 1) {
+          valorFreteValue = 48;
+        } else if (qtdVolumesValue == 2) {
+          valorFreteValue = 54;
+        } else if (qtdVolumesValue == 3) {
+          valorFreteValue = 60;
+        } else if (qtdVolumesValue == 4) {
+          valorFreteValue = 68;
+        } else if (qtdVolumesValue == 5) {
+          valorFreteValue = 74;
+        }
+      } else if (estadoValue === "MG") {
+        if (qtdVolumesValue == 1) {
+          valorFreteValue = 55;
+        } else if (qtdVolumesValue == 2) {
+          valorFreteValue = 62;
+        } else if (qtdVolumesValue == 3) {
+          valorFreteValue = 70;
+        } else if (qtdVolumesValue == 4) {
+          valorFreteValue = 78;
+        } else if (qtdVolumesValue == 5) {
+          valorFreteValue = 86;
+        }
+      } else if (estadoValue === "RJ") {
+        if (qtdVolumesValue == 1) {
+          valorFreteValue = 53;
+        } else if (qtdVolumesValue == 2) {
+          valorFreteValue = 61;
+        } else if (qtdVolumesValue == 3) {
+          valorFreteValue = 68;
+        } else if (qtdVolumesValue == 4) {
+          valorFreteValue = 76;
+        } else if (qtdVolumesValue == 5) {
+          valorFreteValue = 84;
+        }
+      }
+     
+
+      // Atualize o valor do frete na tabela
+      valorFrete.innerHTML = valorFreteValue + " R$";
+    });
+    
+  </script>
+</body>
+</html>
+    
+
